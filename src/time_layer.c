@@ -74,7 +74,7 @@ void time_layer_set_text(TimeLayer *tl, char *hour_text, char *minute_text)
 void time_layer_set_fonts(TimeLayer *tl, GFont hour_font, GFont minute_font)
 {
     tl->hour_font = hour_font;
-    tl->minute_font = minute_font;
+    tl->minute_font = hour_font;
 
     if (tl->hour_text && tl->minute_text)
     {
