@@ -2,7 +2,7 @@
  * based on
  * - http://williams.best.vwh.net/sunrise_sunset_algorithm.htm
  */
-#include "suncalc.h"
+#include "suncal.h"
 #include "my_math.h"
 
 float calcSun(int year, int month, int day, float latitude, float longitude, int sunset, float zenith)
