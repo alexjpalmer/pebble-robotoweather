@@ -2,8 +2,8 @@
 #define CONFIG_H
 
 //NOTE: longitude is positive for East and negative for West
-#define LATITUDE      		51.0
-#define LONGITUDE 		8.0
+#define LATITUDE      		51.7
+#define LONGITUDE 		-1.7
 #define TIMEZONE 		0
 #define DAY_NAME_LANGUAGE 	DAY_NAME_ENGLISH 	// Valid values: DAY_NAME_ENGLISH, DAY_NAME_GERMAN, DAY_NAME_FRENCH
 #define MOONPHASE_NAME_LANGUAGE MOONPHASE_TEXT_ENGLISH 	// Valid values: MOONPHASE_TEXT_ENGLISH, MOONPHASE_TEXT_GERMAN, MOONPHASE_TEXT_FRENCH
