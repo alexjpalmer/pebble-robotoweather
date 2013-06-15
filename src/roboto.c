@@ -296,7 +296,7 @@ void handle_init(AppContextRef ctx)
 	weather_layer_init(&weather_layer, GPoint(0, 79)); //0, 95
 	layer_add_child(&window.layer, &weather_layer.layer);
 	
-	http_register_callbacks((HTTPCallbacks){.failure=failed,.success=success,.reconnect=reconnect,.location=location}, (void*)ctx);
+	http_register_callbacks((HTTPCallbacks){.failure=failed,.success=success,.reconnect=reconnect,.location=location,.time=receivedtime}, (void*)ctx);
 
 	// Sunrise Text
 	text_layer_init(&text_sunrise_layer, window.layer.frame);
