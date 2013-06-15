@@ -303,7 +303,7 @@ void handle_init(AppContextRef ctx)
 	text_layer_set_text_color(&text_sunrise_layer, GColorWhite);
 	text_layer_set_background_color(&text_sunrise_layer, GColorClear);
 	layer_set_frame(&text_sunrise_layer.layer, GRect(7, 152, 100, 30));
-	text_layer_set_font(&text_sunrise_layer, fonts_get_system_font(FONT_KEY_GOTHIC_16));
+	text_layer_set_font(&text_sunrise_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
 	layer_add_child(&window.layer, &text_sunrise_layer.layer);
 
 	// Sunset Text
@@ -311,7 +311,7 @@ void handle_init(AppContextRef ctx)
 	text_layer_set_text_color(&text_sunset_layer, GColorWhite);
 	text_layer_set_background_color(&text_sunset_layer, GColorClear);
 	layer_set_frame(&text_sunset_layer.layer, GRect(110, 152, 100, 30));
-	text_layer_set_font(&text_sunset_layer, fonts_get_system_font(FONT_KEY_GOTHIC_16));
+	text_layer_set_font(&text_sunset_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
 	layer_add_child(&window.layer, &text_sunset_layer.layer); 
 
 	// Refresh time
