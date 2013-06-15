@@ -14,7 +14,7 @@
 #define MY_UUID { 0x91, 0x41, 0xB6, 0x28, 0xBC, 0x89, 0x49, 0x8E, 0xB1, 0x47, 0x04, 0x9F, 0x49, 0xC0, 0x99, 0xAD }
 
 PBL_APP_INFO(MY_UUID,
-             "Roboto Weather+", "Alex Palmer - fork",
+             "Time, Date, Weather & Sun", "Alex Palmer",
              1, 7.5, /* App version */
              RESOURCE_ID_IMAGE_MENU_ICON,
              APP_INFO_WATCH_FACE);
