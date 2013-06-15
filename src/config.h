@@ -28,40 +28,4 @@
 #define WEATHER_HTTP_COOKIE 1949327671
 #define TIME_HTTP_COOKIE 1131038282
 
-// ---- Constants for all available languages ----------------------------------------
-
-const int day_month_day_first[] = {
-	55,
-	87,
-	115
-};
-
-const int day_month_month_first[] = {
-	87,
-	55,
-	115
-};
-
-const char *DAY_NAME_ENGLISH[] = {
-	"SUN",
-	"MON",
-	"TUE",
-	"WED",
-	"THU",
-	"FRI",
-	"SAT"
-};
-
-const char *MOONPHASE_TEXT_ENGLISH[] = {
-	"NM",
-	"WXC",
-	"FQ",
-	"WXG",
-	"FM",
-	"WNG",
-	"TQ",
-	"WNC"
-};
-
-
 #endif
