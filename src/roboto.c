@@ -132,10 +132,6 @@ unsigned short the_last_hour = 25;
 
 
 //Weather Stuff
-static int our_latitude, our_longitude, our_timezone = 99;
-static bool located = false;
-static bool calculated_sunset_sunrise = false;
-
 WeatherLayer weather_layer;
 
 void request_weather();
