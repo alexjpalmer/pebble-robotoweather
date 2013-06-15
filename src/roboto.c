@@ -293,7 +293,7 @@ void handle_init(AppContextRef ctx)
     layer_add_child(&window.layer, &date_layer.layer);
 
 	// Add weather layer
-	weather_layer_init(&weather_layer, GPoint(0, 86)); //0, 95
+	weather_layer_init(&weather_layer, GPoint(0, 84)); //0, 95
 	layer_add_child(&window.layer, &weather_layer.layer);
 	
 	http_register_callbacks((HTTPCallbacks){.failure=failed,.success=success,.reconnect=reconnect,.location=location,.time=receivedtime}, (void*)ctx);
