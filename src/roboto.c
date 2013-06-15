@@ -46,6 +46,11 @@ GFont font_minute;      /* font for minute (thin) */
 TextLayer text_sunrise_layer;
 TextLayer text_sunset_layer;
 
+static int our_latitude, our_longitude, our_timezone = 99;
+static bool located = false;
+static bool calculated_sunset_sunrise = false;
+static bool temperature_set = false;
+
 int moon_phase(int y, int m, int d)
 {
     /*
