@@ -39,8 +39,8 @@ TextLayer date_layer;   /* layer for the date */
 TimeLayer time_layer;   /* layer for the time */
 
 GFont font_date;        /* font for date (normal) */
-GFont font_time;        /* font for time */
-GFont font_sun;      /* font for sunrise & sunset */
+GFont font_hour;        /* font for time */
+GFont font_minute;      /* font for sunrise & sunset */
 
 // Sunrise/set
 TextLayer text_sunrise_layer;
@@ -271,16 +271,16 @@ void handle_init(AppContextRef ctx)
 
     res_d = resource_get_handle(RESOURCE_ID_FONT_ROBOTO_CONDENSED_21);
     res_h = resource_get_handle(RESOURCE_ID_FONT_ROBOTO_BOLD_SUBSET_49);
-    res_m = resource_get_handle(RESOURCE_ID_FONT_ROBOTO_THIN_SUBSET_16);
+    res_m = resource_get_handle(RESOURCE_ID_FONT_ROBOTO_THIN_SUBSET_49);
 
     font_date = fonts_load_custom_font(res_d);
-    font_time = fonts_load_custom_font(res_h);
-    font_sun = fonts_load_custom_font(res_m);
+    font_hour = fonts_load_custom_font(res_h);
+    font_minute = fonts_load_custom_font(res_m);
 
     time_layer_init(&time_layer, window.layer.frame);
     time_layer_set_text_color(&time_layer, GColorWhite);
     time_layer_set_background_color(&time_layer, GColorClear);
-    time_layer_set_fonts(&time_layer, font_time, font_time);
+    time_layer_set_fonts(&time_layer, font_hour, font_minute);
     layer_set_frame(&time_layer.layer, TIME_FRAME);
     layer_add_child(&window.layer, &time_layer.layer);
 
@@ -303,7 +303,7 @@ void handle_init(AppContextRef ctx)
 	text_layer_set_text_color(&text_sunrise_layer, GColorWhite);
 	text_layer_set_background_color(&text_sunrise_layer, GColorClear);
 	layer_set_frame(&text_sunrise_layer.layer, GRect(7, 152, 100, 30));
-	text_layer_set_font(&text_sunrise_layer, font_sun);
+	text_layer_set_font(&text_sunrise_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
 	layer_add_child(&window.layer, &text_sunrise_layer.layer);
 
 	// Sunset Text
@@ -311,7 +311,7 @@ void handle_init(AppContextRef ctx)
 	text_layer_set_text_color(&text_sunset_layer, GColorWhite);
 	text_layer_set_background_color(&text_sunset_layer, GColorClear);
 	layer_set_frame(&text_sunset_layer.layer, GRect(110, 152, 100, 30));
-	text_layer_set_font(&text_sunset_layer, font_sun);
+	text_layer_set_font(&text_sunset_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
 	layer_add_child(&window.layer, &text_sunset_layer.layer); 
 
 	// Refresh time
