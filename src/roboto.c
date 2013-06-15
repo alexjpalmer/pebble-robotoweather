@@ -94,16 +94,18 @@ void updateSunsetSunrise()
 	PblTm pblTime;
 	get_time(&pblTime);
 
-	char *time_format;
+//	char *time_format;
 
-	if (clock_is_24h_style()) 
-	{
-	  time_format = "%R";
-	} 
-	else 
-	{
-	  time_format = "%I:%M";
-	}
+	char *time_format = "%R";
+
+//	if (clock_is_24h_style()) 
+//	{
+//	  time_format = "%R";
+//	} 
+//	else 
+//	{
+//	  time_format = "%I:%M";
+//	}
 
 	float sunriseTime = calcSunRise(pblTime.tm_year, pblTime.tm_mon+1, pblTime.tm_mday, our_latitude / 10000, our_longitude / 10000, 91.0f);
 	float sunsetTime = calcSunSet(pblTime.tm_year, pblTime.tm_mon+1, pblTime.tm_mday, our_latitude / 10000, our_longitude / 10000, 91.0f);
