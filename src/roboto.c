@@ -49,6 +49,7 @@ TextLayer text_sunset_layer;
 static int our_latitude, our_longitude, our_timezone = 99;
 static bool located = false;
 static bool calculated_sunset_sunrise = false;
+static bool temperature_set = false;
 
 int moon_phase(int y, int m, int d)
 {
@@ -131,7 +132,6 @@ void updateSunsetSunrise()
 
 unsigned short the_last_hour = 25;
 
-
 //Weather Stuff
 WeatherLayer weather_layer;
 
@@ -143,10 +143,10 @@ void failed(int32_t cookie, int http_status, void* context) {
 		text_layer_set_text(&weather_layer.temp_layer, "---°");
 	}
 	
-	link_monitor_handle_failure(http_status);
+	// link_monitor_handle_failure(http_status);
 	
 	//Re-request the location and subsequently weather on next minute tick
-	located = false;
+	// located = false;
 }
 
 void success(int32_t cookie, int http_status, DictionaryIterator* received, void* context) {
@@ -162,10 +162,16 @@ void success(int32_t cookie, int http_status, DictionaryIterator* received, void
 	}
 	Tuple* temperature_tuple = dict_find(received, WEATHER_KEY_TEMPERATURE);
 	if(temperature_tuple) {
-		weather_layer_set_temperature(&weather_layer, temperature_tuple->value->int16);
+		// weather_layer_set_temperature(&weather_layer, temperature_tuple->value->int16);
+		static char temp_text[5];
+		memcpy(temp_text, itoa(temperature_tuple->value->int16), 4);
+		int degree_pos = strlen(temp_text);
+		memcpy(&temp_text[degree_pos], "°", 3);
+		text_layer_set_text(&text_temperature_layer, temp_text);
+		temperature_set = true;
 	}
-	
-	link_monitor_handle_success();
+	link_monitor_handle_success(&data);
+	// link_monitor_handle_success();
 }
 
 void location(float latitude, float longitude, float altitude, float accuracy, void* context) {
@@ -195,8 +201,6 @@ void receivedtime(int32_t utc_offset_seconds, bool is_dst, uint32_t unixtime, co
 	    calculated_sunset_sunrise = true;
     }
 }
-
-void request_weather();
 
 /* Called by the OS once per minute. Update the time and date.
 */
@@ -252,6 +256,13 @@ void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *t)
 			link_monitor_ping();
 	    	}
 	}
+	if(!calculated_sunset_sunrise)
+ 	{
+		// Start with some default values
+		text_layer_set_text(&text_sunrise_layer, "Wait!");
+		text_layer_set_text(&text_sunset_layer, "Wait!");
+    	}
+//	if(!(t->tick_time->tm_min % 2) || data.link_status == LinkStatusUnknown) link_monitor_ping();
 }
 
 
