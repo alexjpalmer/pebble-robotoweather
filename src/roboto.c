@@ -49,7 +49,7 @@ TextLayer text_sunset_layer;
 static int our_latitude, our_longitude, our_timezone = 99;
 static bool located = false;
 static bool calculated_sunset_sunrise = false;
-static bool temperature_set = false;
+// static bool temperature_set = false;
 
 int moon_phase(int y, int m, int d)
 {
@@ -162,13 +162,13 @@ void success(int32_t cookie, int http_status, DictionaryIterator* received, void
 	}
 	Tuple* temperature_tuple = dict_find(received, WEATHER_KEY_TEMPERATURE);
 	if(temperature_tuple) {
-		// weather_layer_set_temperature(&weather_layer, temperature_tuple->value->int16);
-		static char temp_text[5];
-		memcpy(temp_text, itoa(temperature_tuple->value->int16), 4);
-		int degree_pos = strlen(temp_text);
-		memcpy(&temp_text[degree_pos], "°", 3);
-		text_layer_set_text(&text_temperature_layer, temp_text);
-		temperature_set = true;
+		weather_layer_set_temperature(&weather_layer, temperature_tuple->value->int16);
+		// static char temp_text[5];
+		// memcpy(temp_text, itoa(temperature_tuple->value->int16), 4);
+		// int degree_pos = strlen(temp_text);
+		// memcpy(&temp_text[degree_pos], "°", 3);
+		// text_layer_set_text(&text_temperature_layer, temp_text);
+		// temperature_set = true;
 	}
 	link_monitor_handle_success(&data);
 	// link_monitor_handle_success();
