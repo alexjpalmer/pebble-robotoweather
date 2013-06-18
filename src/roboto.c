@@ -170,7 +170,7 @@ void success(int32_t cookie, int http_status, DictionaryIterator* received, void
 		// text_layer_set_text(&text_temperature_layer, temp_text);
 		// temperature_set = true;
 	}
-	link_monitor_handle_success(&data);
+	link_monitor_handle_success();
 	// link_monitor_handle_success();
 }
 
